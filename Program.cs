@@ -11,12 +11,34 @@ class Program
 {
     static void Main ()
     {
+        Console.Write("welcome to sum of prime numbers program\n");
+        Console.Write("enter the start point: ");
+        int start = int.Parse(Console.ReadLine());
+        Console.Write("enter the end point: ");
+        int end = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Enter the dimensions of the shape in which you want to place the dominoes.");
-        int x = int.Parse(Console.ReadLine());
-        int y = int.Parse(Console.ReadLine());
-        int res = (x * y) / 2;
-        Console.WriteLine("The maximum number of dominoes you can place is = " + res);
+        int sum = 0;
+        for (int i = start; i <= end; i++)
+        {
+            if (i <= 1) continue;
+
+            bool isPrime = true;
+
+            for (int j = 2; j <= (i / 2); j++)
+            {
+                if (i % j == 0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime)
+            {
+                sum += i;
+            }
+        }
+        Console.WriteLine("the sum of prime numbers is = "+ sum);
+        Console.ReadKey(true);
     }
 };
 
